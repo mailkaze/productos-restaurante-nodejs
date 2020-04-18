@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos del Restaurante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Productos</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-1" type="search" placeholder="Buscar productos..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <button class="btn btn-primary  mx-2" title="Crear nuevo producto" type="button" data-toggle="collapse"
+                data-target="#card-form" aria-expanded="false" aria-controls="card-form">
+                +
+            </button>
+        </form>
+    </nav>
+    <div class="container">
+        <div class="collapse" id="card-form">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control my-1" placeholder="Nombre... (requerido)" id="nombre">
+                                <textarea class="form-control my-1" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="Descripción..." id="descripcion"></textarea>
+                                <input type="text" class="form-control my-1" placeholder="Precio..." id="precio">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control my-1" placeholder="Existencias..." id="stock">
+                                <div class="form-group my-1">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Sección...</option>
+                                        <option>Paellas</option>
+                                        <option>Platos internacionales</option>
+                                        <option>Tapas</option>
+                                        <option>Bebidas</option>
+                                    </select>
+                                </div>
+                                <input type="file" class="form-control-file my-1" id="foto" accept="image/*">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards">
+            aquí van las tarjetas
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
