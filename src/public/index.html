@@ -29,7 +29,8 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control my-1" placeholder="Nombre... (requerido)" id="nombre">
+                                <input type="text" class="form-control my-1" placeholder="Nombre... (requerido)"
+                                    id="nombre">
                                 <textarea class="form-control my-1" id="exampleFormControlTextarea1" rows="3"
                                     placeholder="Descripción..." id="descripcion"></textarea>
                                 <input type="text" class="form-control my-1" placeholder="Precio..." id="precio">
@@ -46,6 +47,7 @@
                                     </select>
                                 </div>
                                 <input type="file" class="form-control-file my-1" id="foto" accept="image/*">
+                                <input type="submit" value="Guardar" class="btn btn-primary">
                             </div>
                         </div>
                     </form>
@@ -54,7 +56,20 @@
         </div>
 
         <div class="cards">
-            aquí van las tarjetas
+                <!-- <div class="card" style="width: 18rem;">
+                    <img src="/uploads/default.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${ nombre }</h5>
+                        <p class="card-text">${ descripcion }</p>
+                        <p class="card-text">Precio: Bs. ${ descripcion }</p>
+                        <p class="card-text">Quedan ${ descripcion } Uds.</p>
+                        <div class="botones float-right">
+                            <a href="#" class="btn btn-primary">Editar</a>
+                            <a href="#" class="btn btn-danger">Borrar</a>
+                        </div>
+                    </div>
+                </div> -->
+
         </div>
     </div>
 
@@ -68,6 +83,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="app.js" type="module"></script>
 </body>
 
 </html>
