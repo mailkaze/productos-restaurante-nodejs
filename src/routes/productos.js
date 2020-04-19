@@ -11,9 +11,17 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req,res) => {
+    console.log('el router responde a la petición POST')
     const {nombre, descripcion, precio, stock, seccion} = req.body
-    const rutaImagen = '/uploads/' + req.file.filename
-    const newProducto = new Producto({nombre, descripcion, precio, stock, seccion, rutaImagen})
+    // si no se envió un archivo del frontend, no se manda el dato a la DB
+    // el schema de producto mete por default la imagen default.jpg si no recibe este campo:
+    var newProducto = ""
+    if (req.file != undefined) { 
+        const rutaImagen = '/uploads/' + req.file.filename
+        newProducto = new Producto({nombre, descripcion, precio, stock, seccion, rutaImagen})
+    } else {
+        newProducto = new Producto({nombre, descripcion, precio, stock, seccion})
+    }
     await newProducto.save()
     res.json({message: 'Producto Guardado'})
 })

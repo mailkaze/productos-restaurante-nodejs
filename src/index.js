@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
     }
 });
 
-app.use(multer({storage}).single('image'))
+app.use(multer({storage}).single('foto'))
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 

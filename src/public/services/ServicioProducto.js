@@ -7,7 +7,6 @@ class ServicioProducto {
     }
     
     async getProductos() {
-        console.log('entra en getProductos de ServicioProducto')
         const res = await fetch(this.URI)
         const productos = res.json()
         return productos
@@ -18,6 +17,8 @@ class ServicioProducto {
             method: 'POST',
             body: producto
         })
+        console.log('el servicio envió los datos por POST a la API:')
+        console.log(producto)
         const info = await res.json()
         console.log(info)
     }

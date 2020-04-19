@@ -3,7 +3,6 @@ const servicioProducto = new ServicioProducto()
 
 class UI {
     async renderProductos() {
-        console.log('entra en renderProductos de UI')
         const productos = await servicioProducto.getProductos()
         const cardsContainer = document.getElementsByClassName('cards')[0]
         cardsContainer.innerHTML = ''
@@ -11,9 +10,10 @@ class UI {
             const card = document.createElement('div');
             card.classList.add('card')
             card.style.width = '18rem'
+            card.style.marginRight = '8px'
+            card.style.marginTop = '10px'
             card.innerHTML = `
-            <div class="card" style="width: 18rem;">
-                <img src="${ producto.foto }" class="card-img-top" alt="...">
+                <img src="${ producto.rutaImagen }" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${ producto.nombre }</h5>
                     <p class="card-text">${ producto.descripcion }</p>
@@ -24,10 +24,17 @@ class UI {
                         <a href="#" class="btn btn-danger">Borrar</a>
                     </div>
                 </div>
-            </div>
             `
             cardsContainer.appendChild(card)
         })
+    }
+
+    async addNewProducto(producto) {
+        console.log('entra en el método de UI')
+        await servicioProducto.postProducto(producto)
+        //this.clearFormProducto
+        this.renderProductos()
+        console.log('llamó a renderProductos()')
     }
 }
 
