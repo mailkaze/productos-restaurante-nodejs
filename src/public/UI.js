@@ -20,8 +20,8 @@ class UI {
                     <p class="card-text">Precio: Bs. ${ producto.precio }</p>
                     <p class="card-text">Quedan ${ producto.stock } Uds.</p>
                     <div class="botones float-right">
-                        <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="#" class="btn btn-danger">Borrar</a>
+                        <a href="#" class="btn btn-primary update" _id="${producto._id}">Editar</a>
+                        <a href="#" class="btn btn-danger delete" _id="${producto._id}">Borrar</a>
                     </div>
                 </div>
             `
@@ -30,11 +30,14 @@ class UI {
     }
 
     async addNewProducto(producto) {
-        console.log('entra en el método de UI')
         await servicioProducto.postProducto(producto)
         //this.clearFormProducto
         this.renderProductos()
-        console.log('llamó a renderProductos()')
+    }
+
+    async deleteProducto(productoId) {
+        await servicioProducto.deleteProducto(productoId)
+        this.renderProductos()
     }
 }
 

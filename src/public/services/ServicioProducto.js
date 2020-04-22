@@ -17,12 +17,20 @@ class ServicioProducto {
             method: 'POST',
             body: producto
         })
-        console.log('el servicio envió los datos por POST a la API:')
-        console.log(producto)
         const info = await res.json()
         console.log(info)
     }
 
+    async deleteProducto(productoId) {
+        const res = await fetch(`${this.URI}/${productoId}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'DELETE'
+        })
+        const data = await res.json()
+        console.log(data)
+    }
 
 }
 

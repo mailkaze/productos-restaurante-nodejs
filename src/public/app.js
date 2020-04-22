@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.getElementById('form-producto').addEventListener('submit', e => {
-    console.log('captura el evento submit del formulario')
-
     const nombre = document.getElementById('nombre').value
     const descripcion = document.getElementById('descripcion').value
     const precio = document.getElementById('precio').value
@@ -26,6 +24,16 @@ document.getElementById('form-producto').addEventListener('submit', e => {
     const ui = new UI()
     ui.addNewProducto(formData)
     //ui.renderMessage('producto guardado', 'success', 3000)
-    console.log('guardó los datos en variables y llamó a UI')
+    e.preventDefault()
+})
+
+document.getElementById('tarjetas-productos').addEventListener('click', e => {
+    if (e.target.classList.contains('delete')) {
+        //mostrar un alert de confirmación y solo coninuamos si confirma la orden
+        const ui = new UI()
+        ui.deleteProducto(e.target.getAttribute('_id'))
+        // ui.renderMessage('Producto eliminado', 'danger', 3000)
+    }
+
     e.preventDefault()
 })
