@@ -38,3 +38,20 @@ document.getElementById('tarjetas-productos').addEventListener('click', e => {
 
     e.preventDefault()
 })
+
+document.getElementById('tarjetas-productos').addEventListener('click', e => {
+    if (e.target.classList.contains('update')) {
+        const ui = new UI()
+        // buscar el id del producto y cargar los datos en el formulario
+        ui.fillFormulario(e.target.getAttribute('_id'))
+        // si el formulario está escondido hay que mostrarlo
+        const collapse = document.getElementsByClassName('collapse')[0]
+        if (!collapse.classList.contains('show')) {
+            collapse.classList.add('show')
+        }
+        // hay que mover la ventana hasta el formulario
+        window.scrollTo(0,0)
+        // el botón de guardar del formulario debe saber si es producto nuevo o es edición
+        // llamar a la funcion update
+    }
+})

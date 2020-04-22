@@ -33,6 +33,12 @@ router.delete('/:id', async (req, res) => {
     res.json({messaje: 'Producto Eliminado'})
 })
 
+// Buscar un producto para mostrarlo en el formulario con el find e hacer Update
+router.post('/update-search/:id', async (req, res) => {
+    const producto = await Producto.findById(req.params.id)
+    res.json(producto)
+})
+
 // Update
 router.post('/:id', async (req, res) => {
     const {nombre, descripcion, precio, stock, seccion} = req.body

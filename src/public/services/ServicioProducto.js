@@ -28,8 +28,20 @@ class ServicioProducto {
             },
             method: 'DELETE'
         })
+        
         const data = await res.json()
         console.log(data)
+    }
+
+    async searchForFillFormulario(productoId) {
+        const res = await fetch(`${this.URI}/update-search/${productoId}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        })
+        const producto = res.json()
+        return producto
     }
 
 }

@@ -39,6 +39,16 @@ class UI {
         await servicioProducto.deleteProducto(productoId)
         this.renderProductos()
     }
+
+    async fillFormulario(productoId) {
+        const producto = await servicioProducto.searchForFillFormulario(productoId)
+
+        document.getElementById('nombre').value = producto.nombre
+        document.getElementById('descripcion').value = producto.descripcion
+        document.getElementById('precio').value = producto.precio
+        document.getElementById('stock').value = producto.stock
+        document.getElementById('seccion').value = producto.seccion
+    }
 }
 
 export default UI
