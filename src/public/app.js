@@ -29,10 +29,11 @@ document.getElementById('form-producto').addEventListener('submit', e => {
 
 document.getElementById('tarjetas-productos').addEventListener('click', e => {
     if (e.target.classList.contains('delete')) {
-        //mostrar un alert de confirmación y solo coninuamos si confirma la orden
-        const ui = new UI()
-        ui.deleteProducto(e.target.getAttribute('_id'))
-        // ui.renderMessage('Producto eliminado', 'danger', 3000)
+        if (confirm('¿Estás seguro de borrar este producto?')) {
+            const ui = new UI()
+            ui.deleteProducto(e.target.getAttribute('_id'))
+            // ui.renderMessage('Producto eliminado', 'danger', 3000)
+        }
     }
 
     e.preventDefault()
