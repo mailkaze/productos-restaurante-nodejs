@@ -44,6 +44,15 @@ class ServicioProducto {
         return producto
     }
 
+    async updateProducto(productoId, producto) {
+        const res = await fetch(`${this.URI}/update/${productoId}`, {
+            method: 'POST',
+            body: producto
+        })
+        const data = await res.json()
+        console.log(data)
+    }
+
 }
 
 

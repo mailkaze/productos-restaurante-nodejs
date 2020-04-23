@@ -40,7 +40,7 @@ router.post('/update-search/:id', async (req, res) => {
 })
 
 // Update
-router.post('/:id', async (req, res) => {
+router.post('/update/:id', async (req, res) => {
     const {nombre, descripcion, precio, stock, seccion} = req.body
     // si no se envió un archivo del frontend, no se manda el dato a la DB
     // el schema de producto mete por default la imagen default.jpg si no recibe este campo:

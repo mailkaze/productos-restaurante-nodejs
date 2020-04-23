@@ -30,7 +30,15 @@ class UI {
     }
 
     async addNewProducto(producto) {
-        await servicioProducto.postProducto(producto)
+        const boton = document.getElementById('boton-guardar')
+        if (!boton.hasAttribute('_id')) {
+            // Producto nuevo
+            await servicioProducto.postProducto(producto)
+        } else {
+            // editando producto existente
+            await servicioProducto.updateProducto(boton.getAttribute('_id'), producto)
+            boton.removeAttribute('_id')
+        }
         //this.clearFormProducto
         this.renderProductos()
     }
@@ -48,6 +56,7 @@ class UI {
         document.getElementById('precio').value = producto.precio
         document.getElementById('stock').value = producto.stock
         document.getElementById('seccion').value = producto.seccion
+        document.getElementById('boton-guardar').setAttribute('_id', producto._id)
     }
 }
 
