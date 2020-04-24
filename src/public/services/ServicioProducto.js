@@ -1,9 +1,9 @@
 class ServicioProducto {
     constructor() {
         // desarrollo: 
-        this.URI = 'http://localhost:3000/api/productos'
+        // this.URI = 'http://localhost:3000/api/productos'
         // producción:
-        // this.URI = 'api/productos'
+        this.URI = 'api/productos'
     }
     
     async getProductos() {
