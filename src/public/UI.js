@@ -2,8 +2,13 @@ import ServicioProducto  from './services/ServicioProducto.js'
 const servicioProducto = new ServicioProducto()
 
 class UI {
-    async renderProductos() {
-        const productos = await servicioProducto.getProductos()
+
+    async loadAllProductos() {
+        const todos = await servicioProducto.getProductos()
+        this.renderProductos(todos)
+    }
+
+    renderProductos(productos) {
         const cardsContainer = document.getElementsByClassName('cards')[0]
         cardsContainer.innerHTML = ''
         productos.forEach( producto => {
@@ -17,6 +22,7 @@ class UI {
                 <div class="card-body">
                     <h5 class="card-title">${ producto.nombre }</h5>
                     <p class="card-text">${ producto.descripcion }</p>
+                    <p class="card-text">Sección: ${ producto.seccion }</p>
                     <p class="card-text">Precio: Bs. ${ producto.precio }</p>
                     <p class="card-text">Quedan ${ producto.stock } Uds.</p>
                     <div class="botones float-right">
@@ -40,12 +46,12 @@ class UI {
             boton.removeAttribute('_id')
         }
         this.clearFormulario()
-        this.renderProductos()
+        this.loadAllProductos()
     }
 
     async deleteProducto(productoId) {
         await servicioProducto.deleteProducto(productoId)
-        this.renderProductos()
+        this.loadAllProductos()
     }
 
     async fillFormulario(productoId) {
@@ -58,12 +64,6 @@ class UI {
         document.getElementById('seccion').value = producto.seccion
         document.getElementById('boton-guardar').setAttribute('_id', producto._id)
 
-        const botonCancelar = document.createElement('button')
-        // botonCancelar.type = "button"
-        botonCancelar.classList.add('btn', 'btn-secondary')
-        botonCancelar.innerHTML = "Cancelar"
-        const  colFormulario2 = document.getElementsByClassName('col')[1]
-        colFormulario2.appendChild(botonCancelar)
         this.collapseFormulario()
     }
 
@@ -77,6 +77,11 @@ class UI {
         const collapse = document.getElementsByClassName('collapse')[0]
         if (collapse.classList.contains('show')) { collapse.classList.remove('show') }
         else { collapse.classList.add('show') }
+    }
+
+    async searchProducto(search) {
+        const coincidencias = await servicioProducto.searchProducto(search)
+        this.renderProductos(coincidencias)
     }
 }
 

@@ -14,12 +14,10 @@
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">Productos</a>
         <form class="form-inline">
-            <input class="form-control mr-sm-1" type="search" placeholder="Buscar productos..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <input class="form-control mr-sm-1" type="search" placeholder="Buscar productos..." aria-label="Search" id="busqueda">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="buscar">Buscar</button>
             <button class="btn btn-primary  mx-2" title="Crear nuevo producto" type="button" data-toggle="collapse"
-                data-target="#card-form" aria-expanded="false" aria-controls="card-form">
-                +
-            </button>
+                data-target="#card-form" aria-expanded="false" aria-controls="card-form">+</button>
         </form>
     </nav>
     <div class="container">
@@ -45,6 +43,7 @@
                                     </select>
                                 </div>
                                 <input type="file" class="form-control-file my-1" id="foto" accept="image/*">
+                                <button type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
                                 <input type="submit" value="Guardar" class="btn btn-primary" id="boton-guardar">
                             </div>
                         </div>

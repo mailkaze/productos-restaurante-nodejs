@@ -2,7 +2,7 @@ import UI from './UI.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI()
-    ui.renderProductos()
+    ui.loadAllProductos()
 })
 
 document.getElementById('form-producto').addEventListener('submit', e => {
@@ -45,4 +45,32 @@ document.getElementById('tarjetas-productos').addEventListener('click', e => {
         ui.fillFormulario(e.target.getAttribute('_id'))    // buscar el id del producto y cargar los datos en el formulario
         window.scrollTo(0,0)   // hay que mover la ventana hasta el formulario
     }
+})
+
+document.getElementById('cancelar').addEventListener('click', () => {
+    const ui = new UI()
+    ui.clearFormulario()
+})
+
+document.getElementById('buscar').addEventListener('click', e => {
+    const busqueda = document.getElementById('busqueda').value
+    const ui = new UI()
+    if (busqueda) {
+        ui.searchProducto(busqueda)
+    } else {
+        ui.loadAllProductos()
+    }
+    e.preventDefault()
+})
+
+document.getElementById('busqueda').addEventListener('input', e => {
+    const busqueda = document.getElementById('busqueda').value
+    const ui = new UI()
+    if (busqueda) {
+        ui.searchProducto(busqueda)
+    } else {
+        ui.loadAllProductos()
+    }
+
+    e.preventDefault()
 })

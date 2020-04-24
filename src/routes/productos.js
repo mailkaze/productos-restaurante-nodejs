@@ -43,7 +43,6 @@ router.post('/update-search/:id', async (req, res) => {
 
 // Update
 router.post('/update/:id', async (req, res) => {
-    const {nombre, descripcion, precio, stock, seccion} = req.body
     var producto = await Producto.findById(req.params.id)
     producto.nombre = req.body.nombre
     producto.descripcion = req.body.descripcion
@@ -60,6 +59,14 @@ router.post('/update/:id', async (req, res) => {
     }
     await producto.save()
     res.json({messaje: 'Producto Modificado'})
+})
+
+// Search
+router.post('/search/:search', async (req, res) => {
+    const coincidencias = await Producto.find(
+        { "nombre": { "$regex": req.params.search, "$options": "i" } }   // usa RegEx para buscar nombres que contengan la busqueda. la opcion i es para hacerlo case Insensitive.
+    );
+    res.json(coincidencias)
 })
 
 module.exports = router

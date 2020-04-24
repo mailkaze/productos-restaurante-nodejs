@@ -53,6 +53,17 @@ class ServicioProducto {
         console.log(data)
     }
 
+    async searchProducto(search) {
+        const res = await fetch(`${this.URI}/search/${search}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        })
+        const coincidencias = await res.json()
+        return coincidencias
+    }
+
 }
 
 
