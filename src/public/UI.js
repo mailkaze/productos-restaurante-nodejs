@@ -39,7 +39,7 @@ class UI {
             await servicioProducto.updateProducto(boton.getAttribute('_id'), producto)
             boton.removeAttribute('_id')
         }
-        //this.clearFormProducto
+        this.clearFormulario()
         this.renderProductos()
     }
 
@@ -57,6 +57,14 @@ class UI {
         document.getElementById('stock').value = producto.stock
         document.getElementById('seccion').value = producto.seccion
         document.getElementById('boton-guardar').setAttribute('_id', producto._id)
+    }
+
+    clearFormulario() {
+        document.getElementById('form-producto').reset()
+        const collapse = document.getElementsByClassName('collapse')[0]
+        if (collapse.classList.contains('show')) {
+            collapse.classList.remove('show')
+        }
     }
 }
 
