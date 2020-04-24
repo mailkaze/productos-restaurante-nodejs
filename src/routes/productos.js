@@ -28,9 +28,10 @@ router.post('/', async (req,res) => {
 router.delete('/:id', async (req, res) => {
     const producto = await Producto.findById(req.params.id)
     await Producto.deleteOne({_id: req.params.id})
-    // borramos el archivo de la foto
-    //TODO: no borrar la imagen si es el default.jpg
-    unlink(path.resolve('./src/public' + producto.rutaImagen))
+    // no borrar la imagen si es el default.jpg
+    if (producto.rutaImagen != '/uploads/default.jpg') {
+        unlink(path.resolve('./src/public' + producto.rutaImagen))   // borramos el archivo de la foto
+    }
     res.json({messaje: 'Producto Eliminado'})
 })
 
@@ -50,8 +51,10 @@ router.post('/update/:id', async (req, res) => {
     producto.stock = req.body.stock
     producto.seccion = req.body.seccion
     if (req.file != undefined) {
-        //TODO: no borrar la imagen si es el default.jpg
-        unlink(path.resolve('./src/public' + producto.rutaImagen))   // si el usuario está subiendo una nueva foto, borramos la que está en el servidor
+        // no borrar la imagen si es el default.jpg
+        if (producto.rutaImagen != '/uploads/default.jpg') {
+            unlink(path.resolve('./src/public' + producto.rutaImagen))   // si el usuario está subiendo una nueva foto, borramos la que está en el servidor
+        }
         const rutaImagen = '/uploads/' + req.file.filename   // y recolectamos el nombre de la que está subiendo para actualizar el campo
         producto.rutaImagen = rutaImagen
     }

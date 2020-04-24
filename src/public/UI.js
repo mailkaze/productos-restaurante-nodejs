@@ -57,14 +57,26 @@ class UI {
         document.getElementById('stock').value = producto.stock
         document.getElementById('seccion').value = producto.seccion
         document.getElementById('boton-guardar').setAttribute('_id', producto._id)
+
+        const botonCancelar = document.createElement('button')
+        // botonCancelar.type = "button"
+        botonCancelar.classList.add('btn', 'btn-secondary')
+        botonCancelar.innerHTML = "Cancelar"
+        const  colFormulario2 = document.getElementsByClassName('col')[1]
+        colFormulario2.appendChild(botonCancelar)
+        this.collapseFormulario()
     }
 
     clearFormulario() {
         document.getElementById('form-producto').reset()
         const collapse = document.getElementsByClassName('collapse')[0]
-        if (collapse.classList.contains('show')) {
-            collapse.classList.remove('show')
-        }
+        this.collapseFormulario()
+    }
+
+    collapseFormulario() {
+        const collapse = document.getElementsByClassName('collapse')[0]
+        if (collapse.classList.contains('show')) { collapse.classList.remove('show') }
+        else { collapse.classList.add('show') }
     }
 }
 
